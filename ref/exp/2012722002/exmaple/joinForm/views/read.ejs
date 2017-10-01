@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title><%= title %></title>
+    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="/stylesheet/style.css">
+  </head>
+  <body>
+    <h1><%= title %></h1>
+
+    <form action="/board/update" method="get">
+      <table border="1">
+        <input type="hidden" name="idx" value="<%=row.idx%>"/>
+        <tr>
+          <td>작성자</td>
+          <td><%=row.creator_id%></td>
+        </tr>
+        <tr>
+          <td>제목</td>
+          <td><%=row.title%></td>
+        </tr>
+        <tr>
+          <td>내용</td>
+          <td><%=row.content%></td>
+        </tr>
+        <tr>
+          <td>조회수</td>
+          <td><%=row.hit%></td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <button type="submit">글 수정</button>
+            <a href="/board">리스트로 돌아가기</a>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>

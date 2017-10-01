@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="/javascripts/jquery-3.2.1.min.js" charset="utf-8"></script>
+    <script>
+      $(function () {
+
+        $("#btnJoin").click(
+          function () {
+            if($("#id").val() == "")
+            {
+              alert("아이디를 꼭 입력 하세요");
+              $("#id").focus();
+              return;
+            }
+            if($("#passwd").val() == "")
+            {
+              alert("비밀번호를 꼭 입력 하세요");
+              $("#passwd").focus();
+              return;
+            }
+            if($("#name").val() == "")
+            {
+              alert("이름을 꼭 입력 하세요");
+              $("#name").focus();
+              return;
+            }
+            if($("#email").val() == "")
+            {
+              alert("이메일을 꼭 입력 하세요");
+              $("#email").focus();
+              return;
+            }
+            if($("#tel2").val() == "")
+            {
+              alert("전화번호 두번째 자리를 확인해 주세요");
+              $("#tel2").focus();
+              return;
+            }
+            if($("#tel3").val() == "")
+            {
+              alert("전화번호 세번째 자리를 확인해 주세요");
+              $("#tel3").focus();
+              return;
+            }
+
+            var tel = $("#tel1").val() + '-' + $("#tel2").val() + '-' + $("#tel3").val();
+            $("#tel").val(tel);
+
+            if($("#address").val() == "")
+            {
+              alert("주소를 꼭 입력 하세요");
+              $("#address").focus();
+              return;
+            }
+            if($("#birth").val() == "")
+            {
+              alert("생일을 꼭 입력 하세요");
+              $("#birth").focus();
+              return;
+            }
+            if(isNaN($("#birth").val()))
+            {
+              alert("생일은 숫자만 입력해 주세요");
+              $("#birth").focus();
+              return;
+            }
+            $("#joinForm").submit();
+          }
+        );
+      });
+    </script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <form id="joinForm" action="/join" method="post">
+      <table width="400" border="1">
+        <tr>
+          <th>아이디</th>
+          <td><input type="text" name="id" id="id" size="12" maxlength="12"></td>
+        </tr>
+        <tr>
+          <th>비밀번호</th>
+          <td><input type="password" name="passwd" id="passwd" size="12" maxlength="12"></td>
+        </tr>
+        <tr>
+          <th>이름</th>
+          <td><input type="text" name="name" id="name" size="10" maxlength="10"></td>
+        </tr>
+        <tr>
+          <th>이메일</th>
+          <td><input type="email" name="email" id="email" size="30" maxlength="50"></td>
+        </tr>
+        <tr>
+          <th>전화번호</th>
+          <td>
+            <input type="hidden" name="tel" id="tel">
+            <select id="tel1" name="tel1">
+              <option value="010">010</option>
+              <option value="011">011</option>
+              <option value="016">016</option>
+              <option value="017">017</option>
+              <option value="018">018</option>
+              <option value="019">019</option>
+            </select>
+
+            <input type="text" name="tel2" id="tel2" size="4" maxlength="4">
+            <input type="text" name="tel3" id="tel3" size="4" maxlength="4">
+          </td>
+        </tr>
+        <tr>
+          <th>주소</th>
+          <td><input type="text" id="address" size="30" maxlength="50"></td>
+        </tr>
+        <tr>
+          <th>직업</th>
+          <td><select id="job" name="job">
+              <option value="학생">학생</option>
+              <option value="직장인">직장인</option>
+              <option value="주부">주부</option>
+          </select></td>
+        </tr>
+        <tr>
+          <th>성별</th>
+          <td>
+            <input type="radio" name="gender" value="남" checked="checked">남
+            <input type="radio" name="gender" value="여">여
+          </td>
+        </tr>
+        <tr>
+          <th>생일</th>
+          <td><input type="text" name="birth" id="birth" size="8" maxlength="8">*YYYYMMDD</td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <input type="button" name="join" id="btnJoin" value="가입">
+            <input type="reset" name="cancel" value="취소">
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
